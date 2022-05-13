@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'shoeStop';
+  mobile_menu_2 = true;
+
+  setMobile(){
+    this.mobile_menu_2 = !this.mobile_menu_2;
+  }
 }
