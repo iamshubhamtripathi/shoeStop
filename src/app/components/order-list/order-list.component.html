@@ -1,1 +1,26 @@
-<p>order-list works!</p>
+<div class="grid grid-cols-6 gap-2">
+    <div class="col-span-4 m-4 border-2 rounded-md p-2">
+        <table class="w-full">
+            <tr class=" border-b font-bold">
+                <td>Id</td>
+                <td>User Id</td>
+                <td>Product Id</td>
+                <td>Date</td>
+                <td>Address</td>
+                <td>Status</td>
+            </tr>
+            <tr *ngFor="let order of orders">
+                <td>{{order.id}}</td>
+                <td>{{order.userId}}</td>
+                <td>{{order.productId}}</td>
+                <td>{{order.date}}</td>
+                <td>{{order.addressId}}</td>
+                <td>{{order.status}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class=" col-span-2">
+
+    </div>
+</div>
+

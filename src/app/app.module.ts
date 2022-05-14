@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { OrderListComponent, ProductListComponent, UserListComponent } from './components';
+import { OrderListComponent, ProductListComponent, UserListComponent, ProductPageComponent } from './components';
 import { OrdersContainerComponent, ProductsContainerComponent, UsersContainerComponent } from './containers';
+import { CategoryPipe } from './pipes';
 
 
 @NgModule({
@@ -15,11 +17,14 @@ import { OrdersContainerComponent, ProductsContainerComponent, UsersContainerCom
     OrdersContainerComponent,
     ProductListComponent,
     OrderListComponent,
-    UserListComponent
+    UserListComponent,
+    ProductPageComponent,
+    CategoryPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

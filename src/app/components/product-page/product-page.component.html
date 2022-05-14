@@ -9,13 +9,13 @@
                 <td>Category</td>
                 <td>Size</td>
             </tr>
-            <tr *ngFor="let product of products">
-                <td [routerLink]="['product', product.id]">{{product.id}}</td>
-                <td>{{product.name}}</td>
-                <td>{{product.description}}</td>
-                <td>{{product.price}}</td>
-                <td>{{product.category | category}}</td>
-                <td>{{product.size}}</td>
+            <tr>
+                <td>{{product?.id}}</td>
+                <td>{{product?.name}}</td>
+                <td>{{product?.description}}</td>
+                <td>{{product?.price}}</td>
+                <td>{{product?.category}}</td>
+                <td>{{product?.size}}</td>
             </tr>
         </table>
     </div>
