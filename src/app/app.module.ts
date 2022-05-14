@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrderListComponent, ProductListComponent, UserListComponent, ProductPageComponent } from './components';
 import { OrdersContainerComponent, ProductsContainerComponent, UsersContainerComponent } from './containers';
-import { CategoryPipe } from './pipes';
+import { CategoryPipe, ColorPipe } from './pipes';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { CategoryPipe } from './pipes';
     OrderListComponent,
     UserListComponent,
     ProductPageComponent,
-    CategoryPipe
+    CategoryPipe,
+    ColorPipe,
   ],
   imports: [
     BrowserModule,

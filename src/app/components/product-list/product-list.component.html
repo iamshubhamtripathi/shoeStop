@@ -3,19 +3,25 @@
         <table class="w-full">
             <tr class=" border-b font-bold">
                 <td>Id</td>
+                <td>Brand</td>
                 <td>Name</td>
                 <td>Description</td>
                 <td>Price</td>
                 <td>Category</td>
                 <td>Size</td>
+                <td>Color</td>
+                <td>Quantity</td>
             </tr>
             <tr *ngFor="let product of products">
                 <td [routerLink]="['product', product.id]">{{product.id}}</td>
+                <td>{{product.brand}}</td>
                 <td>{{product.name}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.price}}</td>
                 <td>{{product.category | category}}</td>
                 <td>{{product.size}}</td>
+                <td>{{product.color | color}}</td>
+                <td>{{product.quantity}}</td>
             </tr>
         </table>
     </div>

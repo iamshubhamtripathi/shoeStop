@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class OrderService {
 
-  connect = environment.connection_string + "orders";
+  connect = environment.connection_string + "orders/";
 
   constructor(private http:HttpClient) { }
 

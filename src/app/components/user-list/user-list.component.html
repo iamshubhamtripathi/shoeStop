@@ -1,1 +1,24 @@
-<p>user-list works!</p>
+<div class="grid grid-cols-6 gap-2">
+    <div class="col-span-4 m-4 border-2 rounded-md p-2">
+        <table class="w-full">
+            <tr class=" border-b font-bold">
+                <td>Id</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Mobile Number</td>
+                <td>Primary Address</td>
+            </tr>
+            <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.first_name}}" "{{user.last_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.mobile_number}}</td>
+                <td>{{user.primary_address_id}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class=" col-span-2">
+
+    </div>
+</div>
+
