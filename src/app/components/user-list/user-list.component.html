@@ -10,10 +10,10 @@
             </tr>
             <tr *ngFor="let user of users">
                 <td>{{user.id}}</td>
-                <td>{{user.first_name}} {{user.last_name}}</td>
+                <td>{{user.fullName}} {{user.last_name}}</td>
                 <td>{{user.email}}</td>
-                <td>{{user.mobile_number}}</td>
-                <td>{{user.primary_address_id}}</td>
+                <td>{{user.mobileNumber}}</td>
+                <td>{{user.primaryAddressId}}</td>
             </tr>
         </table>
     </div>

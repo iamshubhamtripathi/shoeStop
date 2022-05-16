@@ -1,7 +1,19 @@
-<div class="grid grid-cols-6">
-    <div class="col-span-4 m-4 mr-2 rounded-md relative overflow-x-auto">
-        <table class="w-full text-sm shadow-md sm:rounded-lg text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+<div class="grid grid-cols-7">
+    <div class="col-span-7 bg-white px-2 sm:px-4 py-2.5 bg-gray-50">
+        <div class="container flex flex-wrap justify-between items-center mx-auto">
+          <span class="self-center text-xl font-semibold whitespace-nowrap">Products</span>
+          <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+            <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+              <li>
+                <button class="block text-white font-bold rounded-full text-blue-700" (click)="toggleForm()">Create</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    <div class="m-4 mr-2 rounded-md relative overflow-x-auto" [ngClass]="{'col-span-7': toggle , 'col-span-5': !toggle}">
+        <table class="w-full text-sm shadow-md sm:rounded-lg text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr class="font-bold">
                     <th scope="col" class="px-6 py-3">Id</th>
                     <th scope="col" class="px-6 py-3">Brand</th>
@@ -15,113 +27,102 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of products" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <tr *ngFor="let product of products" class="bg-white border-b">
                     <td class="px-6 py-4" [routerLink]="['product', product.id]">{{product.id}}</td>
                     <td class="px-6 py-4">{{product.brand}}</td>
                     <td class="px-6 py-4">{{product.name}}</td>
                     <td class="px-6 py-4">{{product.description}}</td>
                     <td class="px-6 py-4">{{product.price | currency}}</td>
-                    <td class="px-6 py-4">{{product.category | category}}</td>
+                    <td class="px-6 py-4">{{product.category}}</td>
                     <td class="px-6 py-4">{{product.size}}</td>
-                    <td class="px-6 py-4">{{product.color | color}}</td>
+                    <td class="px-6 py-4">{{product.color}}</td>
                     <td class="px-6 py-4">{{product.quantity}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <div class=" col-span-2 m-4 ml-2 border-2 rounded-md p-4">
-        <div class=" w-full text-lg font-bold border-b">
-            Create
-        </div>
-        <div>
-            <label for="Brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Brand</label>
-            <select id="Brand"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Brand</option>
-                <option>Nike</option>
-                <option>Adidas</option>
-                <option>Puma</option>
-                <option>Reebok</option>
-                <option>Asics</option>
-                <option>New Balance</option>
-                <option>Vans</option>
-                <option>Converse</option>
-            </select>
-        </div>
-        <div>
-            <label for="Name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
-            <input type="text" id="Name"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Air Max">
-        </div>
-        <div>
-            <label for="Description"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Description</label>
-            <textarea id="Description" rows="4"
-                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Your message..."></textarea>
-        </div>
-        <div>
-            <label for="Price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Price</label>
-            <input type="number" id="Price"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="150">
-        </div>
-        <div>
-            <label for="Category"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Category</label>
-            <select id="Category"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Category</option>
-                <option>Sneakers</option>
-                <option>Boots</option>
-                <option>Loafers</option>
-                <option>Sandals</option>
-                <option>Slippers</option>
-                <option>Flip Flops</option>
-            </select>
-        </div>
-        <div>
-            <label for="Size" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Size</label>
-            <input type="number" id="Size"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="9">
-        </div>
-        <div>
-            <label for="Color" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Color</label>
-            <select id="Color"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Color</option>
-                <option>Black</option>
-                <option>White</option>
-                <option>Red</option>
-                <option>Blue</option>
-                <option>Green</option>
-                <option>Yellow</option>
-            </select>
-        </div>
-        <div>
-            <label for="Quantity"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Quantity</label>
-            <input type="number" id="Quantity"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="9">
-        </div>
-        <div>
-            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Submit</button>
-        </div>
-    </div>
-</div>
-<div class="grid grid-cols-6 gap-4 mx-4">
-    <div *ngFor="let product of products" class="col-span-1 max-w-xs bg-white shadow-lg rounded-lg overflow-hidden my-10">
-        <div class="px-4 py-2">
-            <h1 class="text-gray-900 font-bold text-3xl uppercase">{{product.name}}</h1>
-            <p class="text-gray-600 text-sm mt-1">{{product.description}}</p>
-        </div>
-        <img class="h-56 w-full object-cover mt-2" [src]="product.image" alt="NIKE AIR">
-        <div class="flex items-center justify-between px-4 py-2 bg-gray-900">
-            <h1 class="text-gray-200 font-bold text-xl">{{product.price | currency}}</h1>
-            <button class="px-3 py-1 bg-gray-200 text-sm text-gray-900 font-semibold rounded">Add to card</button>
+    <div class=" col-span-2 m-4 ml-2 rounded-md relative overflow-x-auto" [ngClass]="{'hidden': toggle}">
+        <div class="w-full text-sm shadow-md sm:rounded-lg text-left text-gray-500">
+            <div class="w-full text-xl font-bold text-gray-700 uppercase px-3 py-3">
+                Create
+            </div>
+            <div class="w-full text-xl font-bold text-gray-700 px-3 py-3">
+                <label for="Brand" class="block mb-2 text-sm font-medium text-gray-900">Brand</label>
+                <select id="Brand"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <option selected>Brand</option>
+                    <option>Nike</option>
+                    <option>Adidas</option>
+                    <option>Puma</option>
+                    <option>Reebok</option>
+                    <option>Asics</option>
+                    <option>New Balance</option>
+                    <option>Vans</option>
+                    <option>Converse</option>
+                </select>
+            </div>
+            <div class="w-full text-xl font-bold text-gray-700 px-3 py-3">
+                <label for="Name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
+                <input type="text" id="Name"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="Air Max">
+            </div>
+            <div class="w-full text-xl font-bold text-gray-700 px-3 py-3">
+                <label for="Description"
+                    class="block mb-2 text-sm font-medium text-gray-900">Description</label>
+                <textarea id="Description" rows="4"
+                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Your message..."></textarea>
+            </div>
+            <div class="w-full text-xl font-bold text-gray-700 px-3 py-3">
+                <label for="Price" class="block mb-2 text-sm font-medium text-gray-900 ">Price</label>
+                <input type="number" id="Price"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="150">
+            </div>
+            <div class="w-full text-xl font-bold text-gray-700 px-3 py-3">
+                <label for="Category"
+                    class="block mb-2 text-sm font-medium text-gray-900">Category</label>
+                <select id="Category"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <option selected>Category</option>
+                    <option>Sneakers</option>
+                    <option>Boots</option>
+                    <option>Loafers</option>
+                    <option>Sandals</option>
+                    <option>Slippers</option>
+                    <option>Flip Flops</option>
+                </select>
+            </div>
+            <div class="w-full text-xl font-bold text-gray-700 px-3 py-3">
+                <label for="Size" class="block mb-2 text-sm font-medium text-gray-900 ">Size</label>
+                <input type="number" id="Size"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="9">
+            </div>
+            <div class="w-full text-xl font-bold text-gray-700 px-3 py-3">
+                <label for="Color" class="block mb-2 text-sm font-medium text-gray-900">Color</label>
+                <select id="Color"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <option selected>Color</option>
+                    <option>Black</option>
+                    <option>White</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                    <option>Green</option>
+                    <option>Yellow</option>
+                </select>
+            </div>
+            <div class="w-full text-xl font-bold text-gray-700 px-3 py-3">
+                <label for="Quantity"
+                    class="block mb-2 text-sm font-medium text-gray-900 ">Quantity</label>
+                <input type="number" id="Quantity"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="9">
+            </div>
+            <div class="w-full text-xl font-bold text-gray-700 px-3 py-3">
+                <button type="button" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Submit</button>
+            </div>
         </div>
     </div>
 </div>

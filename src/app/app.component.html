@@ -1,14 +1,14 @@
-<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded-b dark:bg-gray-800">
+<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded-b shadow-md">
   <div class="container flex flex-wrap justify-between items-center mx-auto">
     <a routerLink="/" class="flex items-center">
       <img src="../assets/images/sneakers.png" class="mr-3 h-6 sm:h-9" alt="Logo">
-      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white font-mono text-blue-500">ShoeStop</span>
+      <span class="self-center text-xl font-semibold whitespace-nowrap font-mono text-blue-500">ShoeStop</span>
     </a>
     <div class="flex items-center md:order-2">
       <span class="sr-only">Open user menu</span>
       <img class="w-8 h-8 rounded-full" src="../assets/images/user_default.png" alt="user photo">
       <button data-collapse-toggle="mobile-menu-2" type="button"
-        class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
         aria-controls="mobile-menu-2" aria-expanded="false" (click)="setMobile()">
         <span class="sr-only">Open main menu</span>
         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -38,7 +38,5 @@
     </div>
   </div>
 </nav>
-
-<!-- block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white cursor-pointer -->
 
 <router-outlet></router-outlet>
