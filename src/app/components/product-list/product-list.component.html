@@ -1,10 +1,18 @@
-<div class="grid grid-cols-6">
-    <div class="col-span-4 m-4 mr-2 rounded-md relative overflow-x-auto">
+<div class="grid grid-cols-7">
+    <div class="col-span-5 m-4 mr-2 rounded-md relative overflow-x-auto">
+        <nav class="navbar">
+            <input
+      type="text"
+      class="form-control"
+      placeholder="Search..."
+      [(ngModel)]="filterTerm"
+    >
+        </nav>
         <table class="w-full text-sm shadow-md sm:rounded-lg text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr class="font-bold">
                     <th scope="col" class="px-6 py-3">Id</th>
-                    <th scope="col" class="px-6 py-3">Brand</th>
+                    <th (click)="sort(brand)" scope="col" class="px-6 py-3">Brand</th>
                     <th scope="col" class="px-6 py-3">Name</th>
                     <th scope="col" class="px-6 py-3">Description</th>
                     <th scope="col" class="px-6 py-3">Price</th>
@@ -12,116 +20,114 @@
                     <th scope="col" class="px-6 py-3">Size</th>
                     <th scope="col" class="px-6 py-3">Color</th>
                     <th scope="col" class="px-6 py-3">Quantity</th>
+                    <th scope="col" class="px-6 py-3">Edit</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of products" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <td class="px-6 py-4" [routerLink]="['product', product.id]">{{product.id}}</td>
-                    <td class="px-6 py-4">{{product.brand}}</td>
+                <tr *ngFor="let product of products|filter:filterTerm|orderBy:key:reverse" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <!-- <td class="px-6 py-4" [routerLink]="['product', product.id]">{{product.id}}</td> -->
+                    <td  class="px-6 py-4">{{product.brand}}</td>
                     <td class="px-6 py-4">{{product.name}}</td>
                     <td class="px-6 py-4">{{product.description}}</td>
                     <td class="px-6 py-4">{{product.price | currency}}</td>
-                    <td class="px-6 py-4">{{product.category | category}}</td>
+                    <td class="px-6 py-4">{{product.category}}</td>
                     <td class="px-6 py-4">{{product.size}}</td>
-                    <td class="px-6 py-4">{{product.color | color}}</td>
+                    <td class="px-6 py-4">{{product.color}}</td>
                     <td class="px-6 py-4">{{product.quantity}}</td>
+                    <td class="px-6 py-4"><button (click)="getById()" >Edit</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div class=" col-span-2 m-4 ml-2 border-2 rounded-md p-4">
+        <form>
         <div class=" w-full text-lg font-bold border-b">
             Create
         </div>
         <div>
             <label for="Brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Brand</label>
-            <select id="Brand"
+            <select #brand id="Brand"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected>Brand</option>
-                <option>Nike</option>
-                <option>Adidas</option>
-                <option>Puma</option>
-                <option>Reebok</option>
-                <option>Asics</option>
-                <option>New Balance</option>
-                <option>Vans</option>
-                <option>Converse</option>
+                <option *ngFor="let item of brands" [value]="item" class="uppercase">{{item}}</option>
+                
             </select>
         </div>
         <div>
             <label for="Name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
-            <input type="text" id="Name"
+            <input #name type="text" id="Name"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Air Max">
         </div>
         <div>
             <label for="Description"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Description</label>
-            <textarea id="Description" rows="4"
+            <textarea #description id="Description" rows="4"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Your message..."></textarea>
         </div>
         <div>
             <label for="Price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Price</label>
-            <input type="number" id="Price"
+            <input #price type="number"  id="Price"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="150">
         </div>
         <div>
             <label for="Category"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Category</label>
-            <select id="Category"
+            <select #category id="Category"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected>Category</option>
-                <option>Sneakers</option>
-                <option>Boots</option>
-                <option>Loafers</option>
-                <option>Sandals</option>
-                <option>Slippers</option>
-                <option>Flip Flops</option>
+               <option *ngFor="let item of categories" [value]="item" class="uppercase">{{item}}</option>
             </select>
         </div>
         <div>
             <label for="Size" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Size</label>
-            <input type="number" id="Size"
+            <input #size type="number" id="Size"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="9">
         </div>
         <div>
             <label for="Color" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Color</label>
-            <select id="Color"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Color</option>
-                <option>Black</option>
-                <option>White</option>
-                <option>Red</option>
-                <option>Blue</option>
-                <option>Green</option>
-                <option>Yellow</option>
-            </select>
+            <input #color type="text" id="Size"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="red">
+
         </div>
         <div>
             <label for="Quantity"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Quantity</label>
-            <input type="number" id="Quantity"
+            <input #quantity type="number" id="Quantity"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="9">
         </div>
         <div>
-            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Submit</button>
+            <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label for="Image" class="form-label">Image Path</label>
+                <input #image class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  type="url" placeholder="" >
+            </div>
         </div>
+        <div>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" (click)="OnFormSubmit(brand.value,name.value,description.value,price.value,category.value,size.value,color.value,quantity.value,image.value)">Submit</button>
+        </div>
+    </form>
     </div>
+    
 </div>
-<div class="grid grid-cols-6 gap-4 mx-4">
-    <div *ngFor="let product of products" class="col-span-1 max-w-xs bg-white shadow-lg rounded-lg overflow-hidden my-10">
-        <div class="px-4 py-2">
-            <h1 class="text-gray-900 font-bold text-3xl uppercase">{{product.name}}</h1>
-            <p class="text-gray-600 text-sm mt-1">{{product.description}}</p>
-        </div>
-        <img class="h-56 w-full object-cover mt-2" [src]="product.image" alt="NIKE AIR">
-        <div class="flex items-center justify-between px-4 py-2 bg-gray-900">
-            <h1 class="text-gray-200 font-bold text-xl">{{product.price | currency}}</h1>
-            <button class="px-3 py-1 bg-gray-200 text-sm text-gray-900 font-semibold rounded">Add to card</button>
-        </div>
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap -m-4">
+        <div *ngFor="let item of products" class="lg:w-1/4 md:w-1/2 p-4 w-full ">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img alt="ecommerce" class="object-cover object-center w-full h-full block" [src]="item.image">
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{item.category}}</h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">{{item.name}}</h2>
+            <p class="mt-1">{{item.price | currency}}</p>
+          </div>
+        </div>    
+      </div>
     </div>
-</div>
+  </section>
