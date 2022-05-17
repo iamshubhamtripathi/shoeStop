@@ -1,0 +1,47 @@
+<div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col w-full mx-auto mb-4">
+    <h2 class="text-gray-900 text-2xl font-medium title-font">Edit</h2>
+    <hr class="mb-5">
+    <div class="relative mb-4">
+        <label for="full-name" class="leading-7 text-sm text-gray-600">{{titles[0]}}</label>
+        <select #brand class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <option *ngFor="let brand of brands" [value]="brand" [selected]="brand == product.brand">{{brand}}</option>
+        </select>
+      </div>
+    <div class="relative mb-4">
+      <label class="leading-7 text-sm text-gray-600">{{titles[1]}}</label>
+      <input #name type="text" [value]="product.name" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+    </div>
+    <div class="relative mb-4">
+        <label class="leading-7 text-sm text-gray-600">{{titles[2]}}</label>
+        <textarea #description type="text" [value]="product.description" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out min-h-4"></textarea>
+    </div>
+    <div class="relative mb-4">
+      <label class="leading-7 text-sm text-gray-600">{{titles[3]}}</label>
+      <input #price type="number" [value]="product.price" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+    </div>
+    <div class="relative mb-4">
+        <label class="leading-7 text-sm text-gray-600">{{titles[4]}}</label>
+        <select #category class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <option *ngFor="let category of categories" [value]="category" [selected]="category == product.category">{{category}}</option>
+        </select>
+      </div>
+    <div class="relative mb-4">
+      <label class="leading-7 text-sm text-gray-600">{{titles[5]}}</label>
+      <input #size type="text" [value]="product.size" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+    </div>
+    <div class="relative mb-4">
+        <label class="leading-7 text-sm text-gray-600">{{titles[6]}}</label>
+        <select #color class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <option *ngFor="let color of colors" [value]="color" [selected]="color == product.color">{{color}}</option>
+        </select>
+      </div>
+    <div class="relative mb-4">
+      <label class="leading-7 text-sm text-gray-600">{{titles[7]}}</label>
+      <input #quantity type="number" [value]="product.quantity" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+    </div>
+    <div class="relative mb-4">
+        <label class="leading-7 text-sm text-gray-600">{{titles[8]}}</label>
+        <input #image type="url" [value]="product.image" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+    </div>
+    <button (click)="put(brand.value,name.value,description.value,price.value,category.value,size.value,color.value,quantity.value,image.value)" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+</div>

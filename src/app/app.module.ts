@@ -4,10 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { OrderListComponent, ProductListComponent, UserListComponent, ProductPageComponent } from './components';
-import { OrdersContainerComponent, ProductsContainerComponent, UsersContainerComponent } from './containers';
-import { AddressListComponent } from './components/address-list/address-list.component';
-import { AddressContainerComponent } from './containers/address-container/address-container.component';
+import { OrderListComponent, ProductListComponent, UserListComponent, ProductEditComponent, AddressEditComponent, AddressCreateComponent, OrderEditComponent, ProductCreateComponent, AddressListComponent } from './components';
+import { AddressContainerComponent, OrdersContainerComponent, ProductsContainerComponent, UsersContainerComponent } from './containers';
 
 @NgModule({
   declarations: [
@@ -18,9 +16,13 @@ import { AddressContainerComponent } from './containers/address-container/addres
     ProductListComponent,
     OrderListComponent,
     UserListComponent,
-    ProductPageComponent,
+    ProductEditComponent,
     AddressListComponent,
-    AddressContainerComponent
+    AddressContainerComponent,
+    ProductCreateComponent,
+    OrderEditComponent,
+    AddressCreateComponent,
+    AddressEditComponent
   ],
   imports: [
     BrowserModule,
