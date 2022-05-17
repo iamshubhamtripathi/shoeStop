@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AddressListComponent, OrderListComponent, ProductListComponent, ProductPageComponent, UserListComponent } from './components';
+import { AddressListComponent, HomepageComponent, HomepageParticularComponent, OrderListComponent, ProductListComponent, ProductPageComponent, UserListComponent } from './components';
 import { AddressContainerComponent, OrdersContainerComponent, ProductsContainerComponent, UsersContainerComponent } from './containers';
 
 const routes: Routes = [
@@ -19,6 +19,8 @@ const routes: Routes = [
   { path: 'addresses', component: AddressContainerComponent, children: [
     { path: '', component: AddressListComponent },
   ] },
+  { path: 'homepage',component:HomepageComponent},
+  
   { path: '**', redirectTo: 'products' }
 ];
 

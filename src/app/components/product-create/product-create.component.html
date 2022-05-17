@@ -1,0 +1,49 @@
+
+
+<div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col w-full mx-auto">
+    <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Edit</h2>
+    <div class="relative mb-4">
+        <label for="full-name" class="leading-7 text-sm text-gray-600">{{titles[0]}}</label>
+        <select id="full-name" name="full-name" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <option *ngFor="let brand of brands" [value]="brand" [selected]="brand == product.brand">{{brand}}</option>
+        </select>
+      </div>
+    <div class="relative mb-4">
+      <label for="full-name" class="leading-7 text-sm text-gray-600">{{titles[1]}}</label>
+      <input type="text" id="full-name" name="full-name" [value]="product.name" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+    </div>
+    <div class="relative mb-4">
+        <label for="full-name" class="leading-7 text-sm text-gray-600">{{titles[2]}}</label>
+        <textarea type="text" id="full-name" name="full-name" [value]="product.description" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out min-h-4"></textarea>
+    </div>
+    <div class="relative mb-4">
+      <label for="full-name" class="leading-7 text-sm text-gray-600">{{titles[3]}}</label>
+      <input type="number" id="full-name" name="full-name" [value]="product.price" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+    </div>
+    <div class="relative mb-4">
+        <label for="full-name" class="leading-7 text-sm text-gray-600">{{titles[4]}}</label>
+        <select id="full-name" name="full-name" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <option *ngFor="let category of categories" [value]="category" [selected]="category == product.category">{{category}}</option>
+        </select>
+      </div>
+    <div class="relative mb-4">
+      <label for="full-name" class="leading-7 text-sm text-gray-600">{{titles[5]}}</label>
+      <input type="text" id="full-name" name="full-name" [value]="product.size" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+    </div>
+    <div class="relative mb-4">
+        <label for="full-name" class="leading-7 text-sm text-gray-600">{{titles[6]}}</label>
+        <select id="full-name" name="full-name" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <option *ngFor="let color of colors" [value]="color" [selected]="color == product.color">{{color}}</option>
+        </select>
+      </div>
+    <div class="relative mb-4">
+      <label for="full-name" class="leading-7 text-sm text-gray-600">{{titles[7]}}</label>
+      <input type="text" id="full-name" name="full-name"  [value]="product.quantity" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+    </div>
+    <div class="relative mb-4">
+        <label for="full-name" class="leading-7 text-sm text-gray-600">{{titles[8]}}</label>
+        <input type="url" id="full-name" name="full-name" [value]="product.image" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+    </div>
+    <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
+    <p class="text-xs text-gray-500 mt-3">Literally you probably haven't heard of them jean shorts.</p>
+</div>
