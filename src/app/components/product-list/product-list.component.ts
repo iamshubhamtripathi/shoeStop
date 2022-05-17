@@ -18,4 +18,8 @@ export class ProductListComponent{
   get(){
     this.product.getProducts().subscribe(data => this.products = data);
   }
+  delete(id:number){
+    this.product.deleteProduct(id).subscribe();
+    location.reload();
+  }
 }
