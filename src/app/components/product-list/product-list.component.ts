@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/services';
 export class ProductListComponent{
 
   products: any;
-  toggle: boolean = true;
+  titles: string[] = ["Brand","Name","Description","Price","Category","Size","Color","Quantity"];
 
   constructor(private product: ProductService) {
     this.get();
@@ -18,8 +18,4 @@ export class ProductListComponent{
   get(){
     this.product.getProducts().subscribe(data => this.products = data);
   }
-  toggleForm(){
-    this.toggle = !this.toggle;
-  }
-
 }

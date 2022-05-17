@@ -9,6 +9,7 @@ import { OrderService } from 'src/app/services';
 export class OrderListComponent{
 
   orders: any;
+  titles: string[] = ["User Id","Product Id","Quantity","Address","Status","Created At","Delivered At"]
 
   constructor(private order:OrderService) {
     this.get();

@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services';
 export class UserListComponent {
 
   users: any;
+  titles: string[] = ["Name","Email","Mobile Number","Primary Address"]
 
   constructor(private user: UserService) { 
     this.get();

@@ -6,13 +6,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users" class="hover:bg-slate-100">
-          <td class="px-2 py-3">{{user.fullName}}</td>
-          <td class="px-2 py-3">{{user.email}}</td>
-          <td class="px-2 py-3">{{user.mobileNumber}}</td>
-          <td class="px-2 py-3">{{user.primaryAddressId}}</td>
+        <tr *ngFor="let address of addresses" class="hover:bg-slate-100">
+          <td class="px-2 py-3">{{address.userId}}</td>
+          <td class="px-2 py-3">{{address.address}}</td>
+          <td class="px-2 py-3">{{address.city}}</td>
+          <td class="px-2 py-3">{{address.state}}</td>
+          <td class="px-2 py-3">{{address.zip}}</td>
         </tr>
       </tbody>
     </table>
 </div>
-
